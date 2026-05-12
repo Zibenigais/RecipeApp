@@ -1,20 +1,36 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'app.dart';
+import 'services/meal_db_service.dart';
+import 'services/settings_service.dart';
+import 'providers/theme_provider.dart';
+import 'providers/ingredients_provider.dart';
+import 'providers/meals_by_ingredient_provider.dart';
+import 'providers/meal_detail_provider.dart';
 
-void main() {
-  runApp(const MainApp());
-}
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
 
-class MainApp extends StatelessWidget {
-  const MainApp({super.key});
+  final settingsService = SettingsService();
+  final mealDbService = MealDbService();
+  final themeProvider = ThemeProvider(settingsService);
+  await themeProvider.load();
 
-  @override
-  Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: Scaffold(
-        body: Center(
-          child: Text('Hello World!'),
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider.value(value: themeProvider),
+        ChangeNotifierProvider(
+          create: (_) => IngredientsProvider(mealDbService, settingsService),
         ),
-      ),
-    );
-  }
+        ChangeNotifierProvider(
+          create: (_) => MealsByIngredientProvider(mealDbService),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => MealDetailProvider(mealDbService),
+        ),
+      ],
+      child: const RecipeApp(),
+    ),
+  );
 }
