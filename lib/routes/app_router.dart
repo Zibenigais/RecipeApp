@@ -3,6 +3,8 @@ import '../screens/ingredients_screen.dart';
 import '../screens/meals_screen.dart';
 import '../screens/meal_detail_screen.dart';
 import '../screens/settings_screen.dart';
+import '../screens/categories_screen.dart';
+import '../screens/category_meals_screen.dart';
 
 final appRouter = GoRouter(
   routes: [
@@ -27,6 +29,17 @@ final appRouter = GoRouter(
     GoRoute(
       path: '/settings',
       builder: (context, state) => const SettingsScreen(),
+    ),
+    GoRoute(
+      path: '/categories',
+      builder: (context, state) => const CategoriesScreen(),
+    ),
+    GoRoute(
+      path: '/meals/category/:name',
+      builder: (context, state) {
+        final name = state.pathParameters['name']!;
+        return CategoryMealsScreen(category: name);
+      },
     ),
   ],
 );
