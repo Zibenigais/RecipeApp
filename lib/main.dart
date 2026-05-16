@@ -7,6 +7,8 @@ import 'providers/theme_provider.dart';
 import 'providers/ingredients_provider.dart';
 import 'providers/meals_by_ingredient_provider.dart';
 import 'providers/meal_detail_provider.dart';
+import 'providers/categories_provider.dart';
+import 'providers/meals_by_category_provider.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -24,7 +26,13 @@ void main() async {
           create: (_) => IngredientsProvider(mealDbService, settingsService),
         ),
         ChangeNotifierProvider(
+          create: (_) => CategoriesProvider(mealDbService),
+        ),
+        ChangeNotifierProvider(
           create: (_) => MealsByIngredientProvider(mealDbService),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => MealsByCategoryProvider(mealDbService),
         ),
         ChangeNotifierProvider(
           create: (_) => MealDetailProvider(mealDbService),
