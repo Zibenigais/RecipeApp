@@ -5,13 +5,11 @@ import '../screens/meal_detail_screen.dart';
 import '../screens/settings_screen.dart';
 import '../screens/categories_screen.dart';
 import '../screens/category_meals_screen.dart';
+import '../screens/favourites_screen.dart';
 
 final appRouter = GoRouter(
   routes: [
-    GoRoute(
-      path: '/',
-      builder: (context, state) => const IngredientsScreen(),
-    ),
+    GoRoute(path: '/', builder: (context, state) => const IngredientsScreen()),
     GoRoute(
       path: '/meals/:name',
       builder: (context, state) {
@@ -33,6 +31,10 @@ final appRouter = GoRouter(
     GoRoute(
       path: '/categories',
       builder: (context, state) => const CategoriesScreen(),
+    ),
+    GoRoute(
+      path: '/favourites',
+      builder: (context, state) => const FavouritesScreen(),
     ),
     GoRoute(
       path: '/meals/category/:name',
