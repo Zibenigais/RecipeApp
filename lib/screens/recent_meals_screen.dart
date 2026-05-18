@@ -54,8 +54,9 @@ class RecentMealsScreen extends StatelessWidget {
             return const EmptyView(message: 'No recent meals found.');
           }
 
-          return ListView.builder(
+          return ListView.separated(
             itemCount: provider.items.length,
+            separatorBuilder: (context, index) => const Divider(height: 1),
             itemBuilder: (context, index) {
               final meal = provider.items[index];
               final summary = MealSummary(

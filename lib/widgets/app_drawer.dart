@@ -28,19 +28,19 @@ class AppDrawer extends StatelessWidget {
             },
           ),
           ListTile(
-<<<<<<< Updated upstream
             leading: const Icon(Icons.category),
             title: const Text('Categories'),
             onTap: () {
               Navigator.pop(context);
               context.go('/categories');
-=======
+            },
+          ),
+          ListTile(
             leading: const Icon(Icons.history),
             title: const Text('Recent Meals'),
             onTap: () {
               Navigator.pop(context);
               context.go('/recent_meals');
->>>>>>> Stashed changes
             },
           ),
           ListTile(

@@ -7,13 +7,10 @@ import 'providers/theme_provider.dart';
 import 'providers/ingredients_provider.dart';
 import 'providers/meals_by_ingredient_provider.dart';
 import 'providers/meal_detail_provider.dart';
-<<<<<<< Updated upstream
 import 'providers/categories_provider.dart';
 import 'providers/meals_by_category_provider.dart';
-=======
 import 'services/recent_meals_service.dart';
 import 'providers/recent_meals_provider.dart';
->>>>>>> Stashed changes
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
