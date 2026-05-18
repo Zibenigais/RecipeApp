@@ -4,6 +4,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import '../providers/meal_detail_provider.dart';
 import '../providers/ingredients_provider.dart';
 import '../models/meal.dart';
+import '../widgets/favourite_button.dart';
 import '../widgets/loading_view.dart';
 import '../widgets/error_view.dart';
 
@@ -32,6 +33,9 @@ class _MealDetailScreenState extends State<MealDetailScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text(provider.meal?.name ?? 'Meal Detail'),
+        actions: [
+          if (provider.meal != null) FavouriteButton(meal: provider.meal!),
+        ],
       ),
       body: _buildBody(provider),
     );
@@ -82,8 +86,10 @@ class _MealDetailScreenState extends State<MealDetailScreen> {
                 _chip(Icons.category, meal.category),
                 _chip(Icons.public, meal.area),
                 const SizedBox(height: 16),
-                Text('Ingredients',
-                    style: Theme.of(context).textTheme.titleMedium),
+                Text(
+                  'Ingredients',
+                  style: Theme.of(context).textTheme.titleMedium,
+                ),
                 const SizedBox(height: 8),
                 ...meal.ingredients.map(
                   (i) => Padding(
@@ -98,8 +104,10 @@ class _MealDetailScreenState extends State<MealDetailScreen> {
                   ),
                 ),
                 const SizedBox(height: 16),
-                Text('Instructions',
-                    style: Theme.of(context).textTheme.titleMedium),
+                Text(
+                  'Instructions',
+                  style: Theme.of(context).textTheme.titleMedium,
+                ),
                 const SizedBox(height: 8),
                 Text(meal.instructions),
               ],

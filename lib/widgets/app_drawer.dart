@@ -36,6 +36,14 @@ class AppDrawer extends StatelessWidget {
             },
           ),
           ListTile(
+            leading: const Icon(Icons.favorite),
+            title: const Text('Favourites'),
+            onTap: () {
+              Navigator.pop(context);
+              context.go('/favourites');
+            },
+          ),
+          ListTile(
             leading: const Icon(Icons.settings),
             title: const Text('Settings'),
             onTap: () {
