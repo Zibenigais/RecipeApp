@@ -5,6 +5,7 @@ import '../screens/meal_detail_screen.dart';
 import '../screens/settings_screen.dart';
 import '../screens/categories_screen.dart';
 import '../screens/category_meals_screen.dart';
+import '../screens/recent_meals_screen.dart';
 import '../screens/favourites_screen.dart';
 
 final appRouter = GoRouter(
@@ -42,6 +43,10 @@ final appRouter = GoRouter(
         final name = state.pathParameters['name']!;
         return CategoryMealsScreen(category: name);
       },
+    ),
+    GoRoute(
+      path: '/recent_meals',
+      builder: (context, state) => const RecentMealsScreen(),
     ),
   ],
 );

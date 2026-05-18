@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import '../providers/meal_detail_provider.dart';
 import '../providers/ingredients_provider.dart';
+import '../providers/recent_meals_provider.dart';
 import '../models/meal.dart';
 import '../widgets/favourite_button.dart';
 import '../widgets/loading_view.dart';
@@ -21,8 +22,13 @@ class _MealDetailScreenState extends State<MealDetailScreen> {
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      context.read<MealDetailProvider>().fetch(widget.mealId);
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
+      final provider = context.read<MealDetailProvider>();
+      await provider.fetch(widget.mealId);
+      final meal = provider.meal;
+      if (meal != null && mounted) {
+        context.read<RecentMealsProvider>().add(meal);
+      }
     });
   }
 
