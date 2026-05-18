@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'app.dart';
 import 'services/meal_db_service.dart';
 import 'services/settings_service.dart';
+import 'services/favourites_service.dart';
 import 'providers/theme_provider.dart';
 import 'providers/ingredients_provider.dart';
 import 'providers/meals_by_ingredient_provider.dart';
@@ -11,14 +12,18 @@ import 'providers/categories_provider.dart';
 import 'providers/meals_by_category_provider.dart';
 import 'services/recent_meals_service.dart';
 import 'providers/recent_meals_provider.dart';
+import 'providers/favourites_provider.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   final settingsService = SettingsService();
   final mealDbService = MealDbService();
+  final favouritesService = FavouritesService();
   final themeProvider = ThemeProvider(settingsService);
+  final favouritesProvider = FavouritesProvider(favouritesService);
   await themeProvider.load();
+  await favouritesProvider.load();
 
   final recentMealsService = RecentMealsService();
   final recentMealsProvider = RecentMealsProvider(recentMealsService);
@@ -28,6 +33,7 @@ void main() async {
     MultiProvider(
       providers: [
         ChangeNotifierProvider.value(value: themeProvider),
+        ChangeNotifierProvider.value(value: favouritesProvider),
         ChangeNotifierProvider(
           create: (_) => IngredientsProvider(mealDbService, settingsService),
         ),

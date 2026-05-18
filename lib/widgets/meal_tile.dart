@@ -5,8 +5,14 @@ import '../models/meal_summary.dart';
 class MealTile extends StatelessWidget {
   final MealSummary meal;
   final VoidCallback onTap;
+  final VoidCallback? onLongPress;
 
-  const MealTile({super.key, required this.meal, required this.onTap});
+  const MealTile({
+    super.key,
+    required this.meal,
+    required this.onTap,
+    this.onLongPress,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -29,6 +35,7 @@ class MealTile extends StatelessWidget {
       title: Text(meal.name),
       trailing: const Icon(Icons.chevron_right),
       onTap: onTap,
+      onLongPress: onLongPress,
     );
   }
 }

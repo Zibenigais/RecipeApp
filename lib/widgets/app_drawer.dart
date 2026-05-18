@@ -41,6 +41,11 @@ class AppDrawer extends StatelessWidget {
             onTap: () {
               Navigator.pop(context);
               context.go('/recent_meals');
+            leading: const Icon(Icons.favorite),
+            title: const Text('Favourites'),
+            onTap: () {
+              Navigator.pop(context);
+              context.go('/favourites');
             },
           ),
           ListTile(
