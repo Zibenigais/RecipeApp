@@ -7,6 +7,7 @@ import '../screens/categories_screen.dart';
 import '../screens/category_meals_screen.dart';
 import '../screens/recent_meals_screen.dart';
 import '../screens/favourites_screen.dart';
+import '../screens/random_meal_screen.dart';
 
 final appRouter = GoRouter(
   routes: [
@@ -36,6 +37,10 @@ final appRouter = GoRouter(
     GoRoute(
       path: '/favourites',
       builder: (context, state) => const FavouritesScreen(),
+    ),
+    GoRoute(
+      path: '/surprise-me',
+      builder: (context, state) => const RandomMealScreen(),
     ),
     GoRoute(
       path: '/meals/category/:name',
