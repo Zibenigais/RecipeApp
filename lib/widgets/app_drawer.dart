@@ -56,7 +56,7 @@ class AppDrawer extends StatelessWidget {
               angle: 0.785398, // 45 degrees (pi / 4)
               child: const Icon(Icons.casino),
             ),
-            title: const Text('Surprise Me!'),
+            title: const Text('Surprise Me'),
             onTap: () {
               Navigator.pop(context);
               context.go('/surprise-me');

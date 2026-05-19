@@ -15,7 +15,7 @@ class RandomMealScreen extends StatelessWidget {
     final provider = context.watch<RandomMealProvider>();
     final title = provider.status == LoadStatus.success && provider.meal != null
         ? provider.meal!.name
-        : 'Surprise Me!';
+        : 'Surprise Me';
 
     return Scaffold(
       appBar: AppBar(
@@ -43,7 +43,7 @@ class RandomMealScreen extends StatelessWidget {
                     const SizedBox(height: 16),
                     ElevatedButton.icon(
                       icon: const Icon(Icons.auto_awesome),
-                      label: const Text('Surprise Me!'),
+                      label: const Text('Surprise Me'),
                       style: ElevatedButton.styleFrom(
                         padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
                         textStyle: const TextStyle(fontSize: 18),
