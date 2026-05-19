@@ -12,6 +12,7 @@ import 'providers/categories_provider.dart';
 import 'providers/meals_by_category_provider.dart';
 import 'services/recent_meals_service.dart';
 import 'providers/recent_meals_provider.dart';
+import 'providers/random_meal_provider.dart';
 import 'providers/favourites_provider.dart';
 
 void main() async {
@@ -48,6 +49,9 @@ void main() async {
         ),
         ChangeNotifierProvider(
           create: (_) => MealDetailProvider(mealDbService),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => RandomMealProvider(mealDbService),
         ),
         ChangeNotifierProvider.value(value: recentMealsProvider),
       ],

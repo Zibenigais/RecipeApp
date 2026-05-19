@@ -68,6 +68,18 @@ class MealDbService {
     return Meal.fromJson(meals.first as Map<String, dynamic>);
   }
 
+  Future<Meal> fetchRandomMeal() async {
+    final uri = Uri.parse('$_base/random.php');
+    final response = await _client.get(uri);
+    _checkStatus(response);
+    final body = jsonDecode(response.body) as Map<String, dynamic>;
+    final meals = body['meals'] as List<dynamic>?;
+    if (meals == null || meals.isEmpty) {
+      throw Exception('Random meal not found');
+    }
+    return Meal.fromJson(meals.first as Map<String, dynamic>);
+  }
+
   void _checkStatus(http.Response response) {
     if (response.statusCode != 200) {
       throw Exception('HTTP ${response.statusCode}');
