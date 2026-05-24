@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import '../models/ingredient.dart';
 import '../models/category.dart';
+import '../models/area.dart';
 import '../models/meal_summary.dart';
 import '../models/meal.dart';
 
@@ -47,6 +48,28 @@ class MealDbService {
 
   Future<List<MealSummary>> fetchMealsByCategory(String category) async {
     final uri = Uri.parse('$_base/filter.php?c=${Uri.encodeComponent(category)}');
+    final response = await _client.get(uri);
+    _checkStatus(response);
+    final body = jsonDecode(response.body) as Map<String, dynamic>;
+    final meals = body['meals'] as List<dynamic>? ?? [];
+    return meals
+        .map((e) => MealSummary.fromJson(e as Map<String, dynamic>))
+        .toList();
+  }
+
+  Future<List<Area>> fetchAreas() async {
+    final uri = Uri.parse('$_base/list.php?a=list');
+    final response = await _client.get(uri);
+    _checkStatus(response);
+    final body = jsonDecode(response.body) as Map<String, dynamic>;
+    final areas = body['meals'] as List<dynamic>? ?? [];
+    return areas
+        .map((e) => Area.fromJson(e as Map<String, dynamic>))
+        .toList();
+  }
+
+  Future<List<MealSummary>> fetchMealsByArea(String area) async {
+    final uri = Uri.parse('$_base/filter.php?a=${Uri.encodeComponent(area)}');
     final response = await _client.get(uri);
     _checkStatus(response);
     final body = jsonDecode(response.body) as Map<String, dynamic>;

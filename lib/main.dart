@@ -14,6 +14,8 @@ import 'services/recent_meals_service.dart';
 import 'providers/recent_meals_provider.dart';
 import 'providers/random_meal_provider.dart';
 import 'providers/favourites_provider.dart';
+import 'providers/areas_provider.dart';
+import 'providers/meals_by_area_provider.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -54,6 +56,12 @@ void main() async {
           create: (_) => RandomMealProvider(mealDbService),
         ),
         ChangeNotifierProvider.value(value: recentMealsProvider),
+        ChangeNotifierProvider(
+          create: (_) => AreasProvider(mealDbService),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => MealsByAreaProvider(mealDbService),
+        ),
       ],
       child: const RecipeApp(),
     ),

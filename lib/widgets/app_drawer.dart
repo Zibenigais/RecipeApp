@@ -45,6 +45,14 @@ class AppDrawer extends StatelessWidget {
                       },
                     ),
                     ListTile(
+                      leading: const Icon(Icons.public_outlined),
+                      title: const Text('Meals by Region'),
+                      onTap: () {
+                        Navigator.pop(context);
+                        context.go('/regions');
+                      },
+                    ),
+                    ListTile(
                       leading: const Icon(Icons.history),
                       title: const Text('Recent Meals'),
                       onTap: () {
