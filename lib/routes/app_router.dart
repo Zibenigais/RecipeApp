@@ -8,6 +8,8 @@ import '../screens/category_meals_screen.dart';
 import '../screens/recent_meals_screen.dart';
 import '../screens/favourites_screen.dart';
 import '../screens/random_meal_screen.dart';
+import '../screens/regions_screen.dart';
+import '../screens/region_meals_screen.dart';
 
 final appRouter = GoRouter(
   routes: [
@@ -52,6 +54,17 @@ final appRouter = GoRouter(
     GoRoute(
       path: '/recent_meals',
       builder: (context, state) => const RecentMealsScreen(),
+    ),
+    GoRoute(
+      path: '/regions',
+      builder: (context, state) => const RegionsScreen(),
+    ),
+    GoRoute(
+      path: '/meals/region/:name',
+      builder: (context, state) {
+        final name = state.pathParameters['name']!;
+        return RegionMealsScreen(region: name);
+      },
     ),
   ],
 );
