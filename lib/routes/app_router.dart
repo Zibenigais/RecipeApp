@@ -10,6 +10,7 @@ import '../screens/favourites_screen.dart';
 import '../screens/random_meal_screen.dart';
 import '../screens/regions_screen.dart';
 import '../screens/region_meals_screen.dart';
+import '../screens/weekly_planner_screen.dart';
 
 final appRouter = GoRouter(
   routes: [
@@ -65,6 +66,10 @@ final appRouter = GoRouter(
         final name = state.pathParameters['name']!;
         return RegionMealsScreen(region: name);
       },
+    ),
+    GoRoute(
+      path: '/weekly_planner',
+      builder: (context, state) => const WeeklyPlannerScreen(),
     ),
   ],
 );
