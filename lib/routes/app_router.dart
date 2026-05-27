@@ -11,6 +11,7 @@ import '../screens/random_meal_screen.dart';
 import '../screens/regions_screen.dart';
 import '../screens/region_meals_screen.dart';
 import '../screens/weekly_planner_screen.dart';
+import '../screens/shopping_list_screen.dart';
 
 final appRouter = GoRouter(
   routes: [
@@ -70,6 +71,10 @@ final appRouter = GoRouter(
     GoRoute(
       path: '/weekly_planner',
       builder: (context, state) => const WeeklyPlannerScreen(),
+    ),
+    GoRoute(
+      path: '/shopping_list',
+      builder: (context, state) => const ShoppingListScreen(),
     ),
   ],
 );

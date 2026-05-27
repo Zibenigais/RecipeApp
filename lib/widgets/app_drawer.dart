@@ -87,6 +87,14 @@ class AppDrawer extends StatelessWidget {
                         context.go('/weekly_planner');
                       },
                     ),
+                    ListTile(
+                      leading: const Icon(Icons.shopping_cart),
+                      title: const Text('Shopping List'),
+                      onTap: () {
+                        Navigator.pop(context);
+                        context.go('/shopping_list');
+                      },
+                    ),
                     const Spacer(),
                     SafeArea(
                       top: false,

@@ -17,6 +17,7 @@ import 'providers/favourites_provider.dart';
 import 'providers/areas_provider.dart';
 import 'providers/meals_by_area_provider.dart';
 import 'providers/weekly_meal_plan_provider.dart';
+import 'providers/shopping_list_provider.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -65,6 +66,9 @@ void main() async {
         ),
         ChangeNotifierProvider(
           create: (_) => WeeklyMealPlanProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => ShoppingListProvider(mealDbService),
         ),
       ],
       child: const RecipeApp(),
